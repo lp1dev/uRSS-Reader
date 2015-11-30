@@ -1,30 +1,54 @@
-<html>
+<html ng-app="urss-reader">
 <head>
 	<meta charset="UTF-8">
+	<meta name=viewport content="width=device-width,initial-scale=1">
 	<title>uRSS - RSS Reader</title>
+	<!--CDN Imports-->
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+	<!--Local CSS imports -->
   <link rel="stylesheet" type="text/css" href="index.css">
-  <script type="text/javascript" src="index.js" ></script>	
-  <script type="text/javascript" src="./res/js/angular.min.js" ></script>	
+  <!--Local JS imports-->
+  <script type="text/javascript" src="res/js/angular.min.js"></script>	
+  <script type="text/javascript" src="res/js/drawer.js"></script>	
+  <script type="text/javascript" src="index.js"></script>	
 </head>
 <body>
+	<!--Header-->
 	<div class="header shadowed">
 		<span id="logo" onclick="drawer();"><b>u</b>RSS <i class="fa fa-rss"></i></span>
 		RSS Feeds Reader
 	</div>
-	<div class="wrapper">
+	<!--Wrapper-->
+	<div class="wrapper" ng-controller="feedsDrawer">
 		<ul class="drawer shadowed" id="drawer">
-			<li class="drawerHeader">
-			</li>
+	<!--		<li class="drawerHeader">
+			</li>-->
+
 			<li class="drawerRow">
-				<i class="fa fa-times drawerIcon"></i>
-				Coucou
+				<i class="fa fa-rss drawerIcon"></i>
+				<a href="#" ng-click="loadAllFeeds($event)">All</a>
 			</li>
+			
+			<li class="drawerRow" ng-repeat="feed in feeds ">
+				<i class="fa fa-rss drawerIcon"></i>
+				<a href="#" ng-click="loadFeed($event, feed.url)">{{feed.name}}</a>
+			</li>
+
 		</ul>
 		<div class="mainContainer" id="mainContainer">
-			Contenu 1
+				<div ng-repeat="article in articles | orderBy: feed.publishedDate" class="article">
+				<h4>
+				{{article.author}} - <a href="{{article.link}}">{{article.title}}</a>
+				</h4>
+				<p>
+					{{article.contentSnippet}}
+				<h5>
+					{{article.publishedDate}} <a href="#" ng-click="loadMore()">more...</a>
+				</h5>
+				</div>
 		</div>
 	</div>
+	<!--Wrapper End-->
 </body>
 </html>
