@@ -1,27 +1,29 @@
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>uRSS - RSS Reader</title>
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'></link>
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"></limk>
-  <link href="./res/js/angular.min.js"></link>
-	<link rel="stylesheet" type="text/css" href="index.css"></link>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <script type="text/javascript" src="index.js" ></script>	
+  <script type="text/javascript" src="./res/js/angular.min.js" ></script>	
 </head>
 <body>
 	<div class="header shadowed">
-		<span id="logo"><b>u</b>RSS</span>
+		<span id="logo" onclick="drawer();"><b>u</b>RSS</span>
 		RSS Feeds Reader
 	</div>
 	<div class="wrapper">
-			<ul class="drawer shadowed">
-        <li class="drawerHeader">
-        </li>
-				<li class="drawerRow">
-					<i class="fa fa-times"></i>
-					Coucou
-				</li>
-			</ul>
-		<div class="mainContainer">
-      Contenu 1
+		<ul class="drawer shadowed" id="drawer">
+			<li class="drawerHeader">
+			</li>
+			<li class="drawerRow">
+				<i class="fa fa-times"></i>
+				Coucou
+			</li>
+		</ul>
+		<div class="mainContainer" id="mainContainer">
+			Contenu 1
 		</div>
 	</div>
 </body>

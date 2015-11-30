@@ -38,6 +38,18 @@ body{
 	background: white;
 	height: 100%;
 	position: fixed;
+	-webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+.drawer.shadowed.closed{
+	-webkit-transform: translate(-15em,0);
+    -moz-transform: translate(-15em,0);
+    -o-transform: translate(-15em,0);
+    -ms-transform: translate(-15em,0);
+    transform: translate(-15em,0);
 }
 
 .drawerHeader{
@@ -46,11 +58,13 @@ body{
 }
 
 .fa{
-	font-size: 20px;
+	color: gray;
+	font-size: 24px;
+	margin-right: 5px;
 }
 
 .drawerRow{
-	padding: 10px;
+	padding: 20px;
 	width: 100%;
 	color:black;
 	font-size: 18px;
@@ -60,6 +74,7 @@ body{
 	height: 100%;
 	float: center;
 	margin-left:250px;
+	padding: 10px;
 }
 
 #logo{
