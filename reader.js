@@ -4,9 +4,11 @@ var app = angular.module('urss-reader', []);
 app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
     $scope.feeds = [];
     $http.get(config_url).then(function(res){
+        $scope.config = res.data;
         console.log("config="+$scope.config);
-        $scope.config = res.responseData;
         $scope.feeds = $scope.config.feeds;
+	if ($scope.feeds.length > 0)
+     	    $scope.loadFeed(null, $scope.feeds[0].url);
     });
  	$scope.selectedFeed = "";
  	$scope.articles = [];
@@ -30,8 +32,6 @@ app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,
     	});
     }
 
-    if ($scope.feeds.length > 0)
-     	$scope.loadFeed(null, $scope.feeds[0].url);
 }]);
 
 app.factory('FeedService',['$http',function($http){
