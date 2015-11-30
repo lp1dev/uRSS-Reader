@@ -17,7 +17,7 @@
 	<!--Header-->
 	<div class="header shadowed">
 		<span id="logo" onclick="drawer();"><b>u</b>RSS <i class="fa fa-rss"></i></span>
-		RSS Feeds Reader
+		Feeds Reader
 	</div>
 	<!--Wrapper-->
 	<div class="wrapper" ng-controller="feedsDrawer">
@@ -29,7 +29,7 @@
 				<i class="fa fa-rss drawerIcon"></i>
 				<a href="#" ng-click="loadAllFeeds($event)">All</a>
 			</li>
-			
+
 			<li class="drawerRow" ng-repeat="feed in feeds ">
 				<i class="fa fa-rss drawerIcon"></i>
 				<a href="#" ng-click="loadFeed($event, feed.url)">{{feed.name}}</a>
