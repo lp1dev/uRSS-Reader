@@ -1,8 +1,8 @@
 var config_url = "http://lp1.eu/public/uRSS-Reader/config.json"
 var app = angular.module('urss-reader', ['ngSanitize']);
 
-app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
-    $scope.feeds = [];
+app.controller("feedsController", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
+    $scope.feeds = [{name:"korben",url:"http://korben.info/rss"}];
     $http.get(config_url).then(
 	function(res){
             $scope.config = res.data;
@@ -43,7 +43,8 @@ app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,
         Feed.parseFeed($scope.selectedFeed.url).then(function(res){
             $scope.pageTitle = $scope.selectedFeed.name;
             $scope.articles=res.data.responseData.feed.entries;
-	    $scope.parseDates();
+            closeDrawer();
+    	    $scope.parseDates();
         });
     }
 
@@ -57,6 +58,7 @@ app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,
     		    $scope.articles.push(article);
     		});
 		$scope.parseDates();
+        closeDrawer();
     	    });
     	});
     }

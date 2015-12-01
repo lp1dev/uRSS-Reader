@@ -22,6 +22,8 @@ function openDrawer(){
 }
 
 function closeDrawer(){
+    mainContainer.style.marginLeft = 0;
+    contentDisplay.style.marginLeft = 0;
     navigationDrawer.className = "drawer shadowed closed";
     filter.style.opacity = 0;
 }
