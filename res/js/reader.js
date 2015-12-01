@@ -1,4 +1,4 @@
-var config_url = "http://lp1.eu/public/uRSS-Reader/config.json"
+var config_url = "http://lp1.eu/projects/uRSS-Reader/config.json"
 var app = angular.module('urss-reader', ['ngSanitize']);
 
 app.controller("feedsController", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
