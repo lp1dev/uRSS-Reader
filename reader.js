@@ -1,4 +1,4 @@
-var config_url = "http://lp1.eu/public/uSS-Reader/config.json"
+var config_url = "http://lp1.eu/public/uRSS-Reader/config.json"
 var app = angular.module('urss-reader', []);
 
 app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
