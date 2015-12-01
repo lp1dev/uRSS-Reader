@@ -93,6 +93,7 @@ body{
     padding-right:15px;
 }
 #filter{
+    visibility:hidden;
     opacity:0.7;
     background: #333;
     width:100%;
