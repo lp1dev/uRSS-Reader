@@ -23,5 +23,5 @@ function openDrawer(){
 
 function closeDrawer(){
     navigationDrawer.className = "drawer shadowed closed";
-    filter.style.visibility = "hidden":
+    filter.style.visibility = "hidden";
 }
