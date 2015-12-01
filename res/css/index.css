@@ -41,7 +41,7 @@ body{
 	-moz-transition: 0.5s ease-in-out;
 	-o-transition: 0.5s ease-in-out;
 	transition: 0.5s ease-in-out;
-	overflow:auto;
+	overflow:hidden;
 	z-index:100;
 }
 
@@ -60,7 +60,7 @@ body{
 
 .drawerRow{
     padding: 20px;
-    width: 210px;
+    width: 190px;
     font-size: 18px;
 }
 
