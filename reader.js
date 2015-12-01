@@ -1,5 +1,5 @@
 var config_url = "http://lp1.eu/public/uRSS-Reader/config.json"
-var app = angular.module('urss-reader', []);
+var app = angular.module('urss-reader', ['ngSanitize']);
 
 app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
     $scope.feeds = [];
@@ -18,6 +18,7 @@ app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,
     $scope.displayArticle=function(e, article){
         $scope.selectedArticle = article;
         $scope.pageTitle = $scope.selectedArticle.author + " - " +$scope.selectedArticle.title;
+	$scope.htmlContent = $scope.selectedArticle.content;
         $scope.displayMode = true;
     }
 
