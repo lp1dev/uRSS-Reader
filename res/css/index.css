@@ -4,6 +4,7 @@ body{
 	font-size: 18px;
 	background:#FaFaFa;
 	color: #666;
+	overflow:hidden;
 }
 
 .shadowed{
