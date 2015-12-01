@@ -2,16 +2,16 @@ var config_url = "http://lp1.eu/public/uRSS-Reader/config.json"
 var app = angular.module('urss-reader', []);
 
 app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
-    $scope.feeds = [{name:"korben", url:"http://korben.info/rss"}];
-    $http.get(config_url).then(function(res){
-        $scope.config = res.data;
-        console.log("config="+$scope.config);
-        $scope.feeds = $scope.config.feeds;
-        if ($scope.feeds.length > 0){
-          $scope.loadFeed(null, $scope.feeds[0].url);
-          $scope.pageTitle = $scope.feeds[0].name;
-      }
-  }, function(error){console.log("Config file unreachable")});
+    $scope.feeds = [];
+    $http.get(config_url).then(
+	function(res){
+            $scope.config = res.data;
+            console.log("config="+$scope.config);
+            $scope.feeds = $scope.config.feeds;
+            if ($scope.feeds.length > 0)
+		$scope.loadAllFeeds(null);
+	}
+	,function(error){console.log("Config file unreachable")});
     $scope.articles = [];
     $scope.displayMode = false;
 
@@ -23,7 +23,17 @@ app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,
 
     $scope.hideArticle=function(e){
         $scope.displayMode = false;
-        $scope.pageTitle = $scope.selectedFeed.name;
+	if ($scope.selectedFeed != null)
+            $scope.pageTitle = $scope.selectedFeed.name;
+	else
+	    $scope.pageTitle = "All";
+    }
+
+    $scope.parseDates=function(){
+	angular.forEach($scope.articles, function(article, i){
+	    $scope.articles[i].date = new Date(article.publishedDate);
+	    $scope.articles[i].dateString = new Date($scope.articles[i].date).toUTCString();
+	    });
     }
 
     $scope.loadFeed=function(e, feed){
@@ -32,18 +42,21 @@ app.controller("feedsDrawer", ['$scope','FeedService','$http', function ($scope,
         Feed.parseFeed($scope.selectedFeed.url).then(function(res){
             $scope.pageTitle = $scope.selectedFeed.name;
             $scope.articles=res.data.responseData.feed.entries;
+	    $scope.parseDates();
         });
     }
 
     $scope.loadAllFeeds=function(e){
     	$scope.articles = [];
+	$scope.pageTitle = "All";
     	angular.forEach($scope.feeds, function(feed) {
-    		Feed.parseFeed(feed.url).then(function(res){
-    			var articles = res.data.responseData.feed.entries;
-    			angular.forEach(articles, function(article) {
-    				$scope.articles.push(article);
-    			})
+    	    Feed.parseFeed(feed.url).then(function(res){
+    		var articles = res.data.responseData.feed.entries;
+    		angular.forEach(articles, function(article) {
+    		    $scope.articles.push(article);
     		});
+		$scope.parseDates();
+    	    });
     	});
     }
 
@@ -56,4 +69,3 @@ app.factory('FeedService',['$http',function($http){
         }
     }
 }]);
-

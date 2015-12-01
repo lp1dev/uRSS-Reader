@@ -38,18 +38,17 @@
 
 		</ul>
 		<div ng-hide="displayMode" class="mainContainer" id="mainContainer">
-			<div ng-repeat="article in articles | orderBy: article.publishedDate" class="article">
-				<a href="">{{article.title}}</a>
+			<div ng-repeat="article in articles | orderBy: '-date'" class="article">
+				{{article.author}} <a href="#" ng-click="displayArticle($event, article)">{{article.title}}</a>
 				<p>
 					{{article.contentSnippet}}
 					<h5>
-						{{article.publishedDate}} <a href="#" ng-click="displayArticle($event,article);"><i class="fa fa-plus"></i></a>
+						{{article.dateString}}
 					</h5>
 				</div>
 			</div>
 			<div class="contentDisplay" id="contentDisplay" ng-show="displayMode">
-				
-				<p>{{selectedArticle.content}}</p>
+				<p ng-bind-html-unsafe="selectedArticle.content">{{selectedArticle.content}}</p>
 				<a href="{{selectedArticle.link}}"><i class="fa fa-link"></i></a>
 			</div>
 		</div>

@@ -17,7 +17,8 @@ body{
 	line-height: 65px;
 	color:#FFF;
 	position: fixed;
-	 z-index: 100;
+	z-index: 100;
+	overflow: hidden;
 }
 
 .wrapper{
@@ -110,11 +111,11 @@ body{
 	background: white;
 	color:#03A9F4;
 	border-radius: 4px;
-	margin-right: 100px;
-	margin-left:95px;
+	margin-right:10px;
+	margin-left:10px;
 }
 
-#logo:hover{
+#logo:active{
 	background: #03A9F4;
 	color:white; 
 }
