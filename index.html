@@ -7,24 +7,25 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<!--Local CSS imports -->
-  <link rel="stylesheet" type="text/css" href="index.css">
-  <!--Local JS imports-->
-  <script type="text/javascript" src="res/js/angular.min.js"></script>	
-  <script type="text/javascript" src="res/js/drawer.js"></script>	
-  <script type="text/javascript" src="reader.js"></script>	
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<!--Local JS imports-->
+	<script type="text/javascript" src="res/js/angular.min.js"></script>	
+	<script type="text/javascript" src="res/js/drawer.js"></script>	
+	<script type="text/javascript" src="reader.js"></script>
 </head>
-<body>
+<body ng-controller="feedsDrawer">
 	<!--Header-->
 	<div class="header shadowed">
 		<span id="logo" onclick="drawer();"><b>u</b>RSS <i class="fa fa-rss"></i></span>
-		Feeds Reader
+					<a ng-show="displayMode" href="#" ng-click="hideArticle()"><i class="fa fa-times" ></i>
+		</a>
+
+		<span ng-bind="pageTitle">
+		</span>
 	</div>
 	<!--Wrapper-->
-	<div class="wrapper" ng-controller="feedsDrawer">
+	<div class="wrapper" >
 		<ul class="drawer shadowed" id="drawer">
-	<!--		<li class="drawerHeader">
-			</li>-->
-
 			<li class="drawerRow">
 				<i class="fa fa-rss drawerIcon"></i>
 				<a href="#" ng-click="loadAllFeeds($event)">All</a>
@@ -32,23 +33,26 @@
 
 			<li class="drawerRow" ng-repeat="feed in feeds ">
 				<i class="fa fa-rss drawerIcon"></i>
-				<a href="#" ng-click="loadFeed($event, feed.url)">{{feed.name}}</a>
+				<a href="#" ng-click="loadFeed($event, feed)">{{feed.name}}</a>
 			</li>
 
 		</ul>
-		<div class="mainContainer" id="mainContainer">
-				<div ng-repeat="article in articles | orderBy: feed.publishedDate" class="article">
-				<h4>
-				{{article.author}} - <a href="{{article.link}}">{{article.title}}</a>
-				</h4>
+		<div ng-hide="displayMode" class="mainContainer" id="mainContainer">
+			<div ng-repeat="article in articles | orderBy: article.publishedDate" class="article">
+				<a href="">{{article.title}}</a>
 				<p>
 					{{article.contentSnippet}}
-				<h5>
-					{{article.publishedDate}} <a href="#" ng-click="loadMore()">more...</a>
-				</h5>
+					<h5>
+						{{article.publishedDate}} <a href="#" ng-click="displayArticle($event,article);"><i class="fa fa-plus"></i></a>
+					</h5>
 				</div>
+			</div>
+			<div class="contentDisplay" id="contentDisplay" ng-show="displayMode">
+				
+				<p>{{selectedArticle.content}}</p>
+				<a href="{{selectedArticle.link}}"><i class="fa fa-link"></i></a>
+			</div>
 		</div>
-	</div>
-	<!--Wrapper End-->
-</body>
-</html>
+		<!--Wrapper End-->
+	</body>
+	</html>
