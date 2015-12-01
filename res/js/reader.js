@@ -1,4 +1,4 @@
-var config_url = "http://lp1.eu/projects/uRSS-Reader/config.json"
+var config_url = "http://lp1.eu/projects/uRSS-Reader/config.json";
 var app = angular.module('urss-reader', ['ngSanitize']);
 
 app.controller("feedsController", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
@@ -43,7 +43,6 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
         Feed.parseFeed($scope.selectedFeed.url).then(function(res){
             $scope.pageTitle = $scope.selectedFeed.name;
             $scope.articles=res.data.responseData.feed.entries;
-            closeDrawer();
     	    $scope.parseDates();
         });
     }
@@ -58,7 +57,6 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
     		    $scope.articles.push(article);
     		});
 		$scope.parseDates();
-        closeDrawer();
     	    });
     	});
     }
