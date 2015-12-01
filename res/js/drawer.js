@@ -18,10 +18,10 @@ function drawer(){
 
 function openDrawer(){
     navigationDrawer.className = "drawer shadowed";
-    filter.style.opacity = 0.5;
+    filter.style.visibilty = "visible";
 }
 
 function closeDrawer(){
     navigationDrawer.className = "drawer shadowed closed";
-    filter.style.opacity = 0;
+    filter.style.visibility = "hidden":
 }
