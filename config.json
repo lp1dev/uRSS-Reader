@@ -1,8 +1,7 @@
 {"feeds":[
-{"name":"korben","url":"http://korben.info/rss"},
+{"name":"Korben","url":"http://korben.info/rss"},
 {"name":"Tuxicoman", "url":"https://tuxicoman.jesuislibre.net/feed"},
 {"name":"HackerNews", "url":"https://news.ycombinator.com/rss"},
-{"name":"Frandroid", "url":"http://www.frandroid.com/feed"},
 {"name":"Presse-Citron", "url":"http://www.presse-citron.net/feed/"},
 {"name":"Wired Top-Stories", "url":"http://feeds.wired.com/wired/index"},
 {"name":"Sky News", "url":"http://feeds.skynews.com/feeds/rss/world.xml"},

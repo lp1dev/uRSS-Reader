@@ -32,33 +32,45 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
 
     $scope.parseDates=function(){
 	angular.forEach($scope.articles, function(article, i){
-	    $scope.articles[i].date = new Date(article.publishedDate);
+	    $scope.articles[i].date = new Date(article.pubDate);
 	    $scope.articles[i].dateString = new Date($scope.articles[i].date).toUTCString();
 	    });
     }
 
+    $scope.setAuthor=function(articles, feed)
+    {
+	angular.forEach(articles, function(article, i){
+	    articles[i].author = feed;
+	});
+	return articles;
+    }
+
     $scope.loadFeed=function(e, feed){
         $scope.displayMode = false;
-    	$scope.selectedFeed = feed;        
+    	$scope.selectedFeed = feed;
+        $scope.pageTitle = "Loading...";
         Feed.parseFeed($scope.selectedFeed.url).then(function(res){
             $scope.pageTitle = $scope.selectedFeed.name;
-            $scope.articles=res.data.responseData.feed.entries;
-            closeDrawer();
+            $scope.articles = $scope.setAuthor(res.data.rss.channel.item, $scope.selectedFeed.name);
     	    $scope.parseDates();
+	    $scope.selectedFeed.img = res.data.rss.channel.image.url;
+            closeDrawer();
         });
     }
 
     $scope.loadAllFeeds=function(e){
     	$scope.articles = [];
-	$scope.pageTitle = "All";
+        $scope.pageTitle = "Loading...";
     	angular.forEach($scope.feeds, function(feed) {
     	    Feed.parseFeed(feed.url).then(function(res){
-    		var articles = res.data.responseData.feed.entries;
+		$scope.pageTitle = "All"
+		console.log(res.data);
+    		var articles = $scope.setAuthor(res.data.rss.channel.item, feed.name);
     		angular.forEach(articles, function(article) {
     		    $scope.articles.push(article);
     		});
 		$scope.parseDates();
-        closeDrawer();
+		closeDrawer();
     	    });
     	});
     }
@@ -68,7 +80,7 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
 app.factory('FeedService',['$http',function($http){
     return {
         parseFeed : function(url){
-            return $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+            return $http.get('http://lp1.eu:8001/?feed='+url);
         }
     }
 }]);

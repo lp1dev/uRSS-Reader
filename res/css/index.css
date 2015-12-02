@@ -27,6 +27,7 @@ body{
 	width: 100%;
 	margin:0px auto;
 	margin-top: 65px;
+	overflow:auto;
 }
 
 .drawer{
@@ -42,7 +43,6 @@ body{
 	-moz-transition: 0.5s ease-in-out;
 	-o-transition: 0.5s ease-in-out;
 	transition: 0.5s ease-in-out;
-	overflow:auto;
 	z-index:100;
 }
 
@@ -57,11 +57,12 @@ body{
 .drawerHeader .fa{
     height: 250px;
     font-size:35px;
+    background:url('/res/img/Feed-icon.svg');
 }
 
 .drawerRow{
-    padding: 20px;
-    width: 190px;
+    padding:10px;
+    width: 230px;
     font-size: 18px;
 }
 
@@ -73,9 +74,20 @@ body{
     height: 100%;
     float: center;
     padding: 10px;
-    margin-left:250px;
     overflow:auto;
 }
+
+.contentDisplay{
+        height: 100%;
+        float:center;
+        padding: 10px;
+}
+
+.contentDisplay .fa{
+    font-size: 30px;
+    margin:10px;
+}
+
 
 #logo{
     margin-left:15px;
@@ -103,4 +115,15 @@ body{
 
 .drawerRow:hover{
     background: #EEE;
+}
+
+.article{
+        border-bottom: 1px solid gray;
+        color:gray;
+        font-size: 18px;
+}
+
+.article .fa{
+        font-size: 25px;
+        color:black;
 }

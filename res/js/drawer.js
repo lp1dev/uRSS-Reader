@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     contentDisplay = document.getElementById("contentDisplay");
     navigationDrawer = document.getElementById("drawer");
     filter = document.getElementById("filter");
-    mainContainer.style.marginLeft = 0;
 });
 
 function drawer(){
