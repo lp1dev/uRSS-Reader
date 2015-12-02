@@ -44,14 +44,12 @@
    </ul>
    <!--Main Container-->
    <div ng-hide="displayMode" class="mainContainer" id="mainContainer">
-     <div ng-repeat="article in articles | orderBy: '-date'" class="card">
-       <a ng-click="displayArticle($event, article)">
+     <div ng-repeat="article in articles | orderBy: '-date'" class="card" ng-click="displayArticle($event, article)">
 	 <h4> {{article.author}} - {{article.title}}</h4>
          <p>
 	   <span ng-bind-html="article.description"></span>
 	 </p>
          {{article.dateString}}
-       </a>
      </div>
    </div>
    <!--Main Container End-->
