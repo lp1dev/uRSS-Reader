@@ -38,9 +38,9 @@
        <i class="fa fa-rss drawerIcon"></i>
        <a href="#" ng-click="loadAllFeeds($event)">All</a>
      </li>
-     <li class="drawerRow" ng-repeat="feed in feeds ">
+     <li ng-click="loadFeed($event, feed)" onclick="closeDrawer();" class="drawerRow" ng-repeat="feed in feeds ">
         <i class="fa fa-rss drawerIcon"></i>
-        <a href="#" ng-click="loadFeed($event, feed)" onclick="closeDrawer();">{{feed.name}}</a>
+        {{feed.name}}
       </li>
      <div class="circle">&nbsp;</div>
    </ul>
