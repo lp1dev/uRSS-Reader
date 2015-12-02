@@ -70,7 +70,6 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
     		    $scope.articles.push(article);
     		});
 		$scope.parseDates();
-		closeDrawer();
     	    });
     	});
     }
