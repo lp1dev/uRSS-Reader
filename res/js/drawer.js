@@ -1,11 +1,13 @@
 var isDrawerOpened = false;
-var mainContainer, navigationDrawer, filter, header;
+var mainContainer, navigationDrawer, filter, header, contentDisplay;
 document.addEventListener("DOMContentLoaded", function(event) {
     mainContainer = document.getElementById("mainContainer");
+    contentDisplay = document.getElementById("contentDisplay");
     navigationDrawer = document.getElementById("drawer");
     header = document.getElementById("headerContent");
     filter = document.getElementById("filter");
     mainContainer.style.marginLeft = 0;
+    contentDisplay.style.marginLeft = 0;
     header.style.marginLeft = 0;
 });
 
@@ -31,6 +33,7 @@ function openDrawer(){
     }
     else{
 	mainContainer.style.marginLeft = navigationDrawer.style.width;
+	contentDisplay.style.marginLeft = navigationDrawer.style.width;
 	header.style.marginLeft = navigationDrawer.style.width;
     }
 }
@@ -42,6 +45,7 @@ function closeDrawer(){
     }
     else{
 	mainContainer.style.marginLeft = 0;
+	contentDisplay.style.marginLeft = 0;
 	header.style.marginLeft = 0;
     }
 }
