@@ -24,7 +24,7 @@
   <div class="header shadowed">
     <div id="headerContent">
       <span ng-hide="displayMode" onclick="drawer()" id="hamburger">&#9776</span>
-      <i id="hamburger" ng-show="displayMode" ng-click="hideArticle()" class="fa fa-arrow-left"></i>
+      <i ng-show="displayMode" id="hamburger" ng-click="hideArticle()" class="fa fa-arrow-left"></i>
       <span id="page_title" ng-bind="pageTitle"></span>
     </div>
   </div>
@@ -59,6 +59,7 @@
      <div class="card">
         <p>{{selectedArticle.dateString}}</p>
 	<p ng-bind-html="selectedArticle.html_content"></p>
+        <a href="{{selectedArticle.link}}">LINK</a>
         <a href="{{selectedArticle.link}}">LINK</a>
      </div>
    </div>
