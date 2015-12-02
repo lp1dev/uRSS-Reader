@@ -9,9 +9,9 @@
   <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <!--Remote CSS imports -->
   <!--Local CSS imports -->
-  <link rel="stylesheet" type="text/css" href="res/css/index.css">
+  <link rel="stylesheet" type="text/css" href="res/css/purejs.css">
+  <link rel="stylesheet" type="text/css" href="res/css/purejs-cards.css">
   <link rel="stylesheet" type="text/css" href="res/css/theme-blue.css">
-  <link rel="stylesheet" type="text/css" href="res/css/spinner.css">
   <!--Local JS imports-->
   <script type="text/javascript" src="res/js/angular.min.js"></script>  
   <script type="text/javascript" src="res/js/angular-sanitize.js"></script> 
@@ -21,17 +21,17 @@
 <body ng-controller="feedsController">
   <!--Header-->
   <div class="header shadowed">
-    <span onclick="drawer()" id="hamburger">&#9776</span>
-    <span id="logo"><b>u</b>RSS <i class="fa fa-rss"></i></span>
-    <a ng-show="displayMode" href="#" ng-click="hideArticle()"><i class="fa fa-times"></i></a>
-    <span id="page_title" ng-bind="pageTitle"></span>
+    <div id="headerContent">
+      <span ng-hide="displayMode" onclick="drawer()" id="hamburger">&#9776</span>
+      <i id="hamburger" ng-show="displayMode" ng-click="hideArticle()" class="fa fa-arrow-left"></i>
+      <span id="page_title" ng-bind="pageTitle"></span>
+    </div>
   </div>
   <!--Header End-->
   <!--Wrapper-->
   <div class="wrapper" >
     <ul class="drawer shadowed closed" id="drawer" ondrag="drawer()">
      <li class="drawerHeader">
-       <i class="fa fa-times" onclick="drawer()"></i><br/>
      </li>
      <li class="drawerRow">
        <i class="fa fa-rss drawerIcon"></i>
@@ -46,22 +46,25 @@
    <div id="filter"></div>
    <!--Main Container-->
    <div ng-hide="displayMode" class="mainContainer" id="mainContainer">
-    <div ng-repeat="article in articles | orderBy: '-date'" class="article">
-       <h4> {{article.author}} - <a href="#" ng-click="displayArticle($event, article)">{{article.title}}</a></h4>
-        <p>
-	  <span ng-bind-html="article.description"></span>
-          <h5>
-            {{article.dateString}}
-          </h5>
-        </div>
+     <div ng-repeat="article in articles | orderBy: '-date'" class="card">
+       <a ng-click="displayArticle($event, article)">
+	 <h4> {{article.author}} - {{article.title}}</h4>
+         <p>
+	   <span ng-bind-html="article.description"></span>
+           {{article.dateString}}
+	 </p>
+       </a>
+     </div>
    </div>
    <!--Main Container End-->
    <div class="contentDisplay" id="contentDisplay" ng-show="displayMode">
+     <div class="card">
         <a href="{{selectedArticle.link}}"><i class="fa fa-link"></i></a>
         <p>{{selectedArticle.dateString}}</p>
 	<p ng-bind-html="selectedArticle.html_content"></p>
-      </div>
- </div>
+     </div>
+   </div>
+  </div>
  <!--Wrapper End-->
 </body>
 </html>

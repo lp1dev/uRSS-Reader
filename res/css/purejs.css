@@ -1,10 +1,9 @@
 body{
 	margin: 0px;
 	font-family: 'Roboto', serif;
-	font-size: 18px;
-	background:#FaFaFa;
+	font-size: 17px;
+	background:#F0F0F0;
 	color: #666;
-	overflow:hidden;
 }
 
 .shadowed{
@@ -14,11 +13,13 @@ body{
 }
 
 .header{
-	width: 100%;
-	height: 65px;
-	line-height: 65px;
-	position: fixed;
-	overflow: hidden;
+    font-size: 18px;
+    width: 100%;
+    height: 65px;
+    line-height: 65px;
+    position: fixed;
+    overflow: hidden;
+    z-index:50;
 }
 
 .wrapper{
@@ -27,7 +28,6 @@ body{
 	width: 100%;
 	margin:0px auto;
 	margin-top: 65px;
-	overflow:auto;
 }
 
 .drawer{
@@ -43,10 +43,11 @@ body{
 	-moz-transition: 0.5s ease-in-out;
 	-o-transition: 0.5s ease-in-out;
 	transition: 0.5s ease-in-out;
+	overflow:auto;
 	z-index:100;
 }
 
-.drawer.shadowed.closed{
+.closed{
     -webkit-transform: translate(-15em,0);
     -moz-transform: translate(-15em,0);
     -o-transform: translate(-15em,0);
@@ -54,15 +55,18 @@ body{
     transform: translate(-15em,0);
 }
 
-.drawerHeader .fa{
+.drawerHeader{
     height: 250px;
+}
+
+.drawerHeader .fa{
     font-size:35px;
-    background:url('/res/img/Feed-icon.svg');
 }
 
 .drawerRow{
-    padding:10px;
-    width: 230px;
+    padding-left:15px;
+    line-height:65px;
+    height:65px;
     font-size: 18px;
 }
 
@@ -74,20 +78,8 @@ body{
     height: 100%;
     float: center;
     padding: 10px;
-    overflow:auto;
+    margin-left:250px;
 }
-
-.contentDisplay{
-        height: 100%;
-        float:center;
-        padding: 10px;
-}
-
-.contentDisplay .fa{
-    font-size: 30px;
-    margin:10px;
-}
-
 
 #logo{
     margin-left:15px;
@@ -101,29 +93,37 @@ body{
 
 #hamburger{
     font-size:25px;
-    padding-left:15px;
-    padding-right:15px;
+    padding:20px;
 }
+
+#hamburger:hover{
+    background-color:rgba(0,0,0,0.1);
+    border-radius: 100px;
+}
+
 #filter{
     visibility:hidden;
-    opacity:0.7;
+    opacity:0.5;
     background: #333;
     width:100%;
     height:100%;
-    position:absolute;
+    position:fixed;
+    overflow:hidden;
+    z-index:0;
 }
 
 .drawerRow:hover{
     background: #EEE;
 }
 
-.article{
-        border-bottom: 1px solid gray;
-        color:gray;
-        font-size: 18px;
+#headerContent{
+    margin-left:250px;
 }
 
-.article .fa{
-        font-size: 25px;
-        color:black;
+h4{
+    margin:0px;
+    margin-bottom:4px;
+    font-size:22px;
+    text-decoration:none;
+    font-weight:normal;
 }
