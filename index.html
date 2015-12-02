@@ -32,9 +32,9 @@
   <!--Wrapper-->
   <div class="wrapper" >
     <ul class="drawer shadowed closed" id="drawer" ondrag="drawer()">
-     <li class="drawerRow">
+     <li ng-click="loadAllFeeds($event)" class="drawerRow">
        <i class="fa fa-rss drawerIcon"></i>
-       <a href="#" ng-click="loadAllFeeds($event)">All</a>
+       All
      </li>
      <li ng-click="loadFeed($event, feed)" onclick="closeDrawer();" class="drawerRow" ng-repeat="feed in feeds ">
         <i class="fa fa-rss drawerIcon"></i>
