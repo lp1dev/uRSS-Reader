@@ -19,6 +19,7 @@
   <script type="text/javascript" src="res/js/reader.js"></script>
 </head>
 <body ng-controller="feedsController">
+  <div id="filter" onclick="drawer()"></div>   
   <!--Header-->
   <div class="header shadowed">
     <div id="headerContent">
@@ -43,7 +44,6 @@
       </li>
      <div class="circle">&nbsp;</div>
    </ul>
-   <div id="filter"></div>
    <!--Main Container-->
    <div ng-hide="displayMode" class="mainContainer" id="mainContainer">
      <div ng-repeat="article in articles | orderBy: '-date'" class="card">
