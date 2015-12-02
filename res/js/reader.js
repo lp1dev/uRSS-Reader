@@ -1,4 +1,4 @@
-var config_url = "http://lp1.eu/projects/uRSS-Reader/config.json"
+var config_url = "http://lp1.eu/projects/uRSS-Reader/config.json";
 var app = angular.module('urss-reader', ['ngSanitize']);
 
 app.controller("feedsController", ['$scope','FeedService','$http', function ($scope,Feed,$http) {
@@ -51,7 +51,11 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
         $scope.pageTitle = "Loading...";
         Feed.parseFeed($scope.selectedFeed.url).then(function(res){
             $scope.pageTitle = $scope.selectedFeed.name;
+<<<<<<< HEAD
             $scope.articles = $scope.setAuthor(res.data.rss.channel.item, $scope.selectedFeed.name);
+=======
+            $scope.articles=res.data.responseData.feed.entries;
+>>>>>>> 45d13bed677a28bbaca0277cd59aff434a68a5f4
     	    $scope.parseDates();
 	    $scope.selectedFeed.img = res.data.rss.channel.image.url;
             closeDrawer();
@@ -70,7 +74,10 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
     		    $scope.articles.push(article);
     		});
 		$scope.parseDates();
+<<<<<<< HEAD
 		closeDrawer();
+=======
+>>>>>>> 45d13bed677a28bbaca0277cd59aff434a68a5f4
     	    });
     	});
     }
