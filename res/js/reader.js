@@ -51,9 +51,9 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
         $scope.pageTitle = "Loading...";
         Feed.parseFeed($scope.selectedFeed.url).then(function(res){
             $scope.pageTitle = $scope.selectedFeed.name;
-            $scope.articles = $scope.setAuthor(res.data.rss.channel.item, $scope.selectedFeed.name);
+            $scope.articles = $scope.setAuthor(res.data.rss.channel[0].item, $scope.selectedFeed.name);
     	    $scope.parseDates();
-	    $scope.selectedFeed.img = res.data.rss.channel.image.url;
+	    $scope.selectedFeed.img = res.data.rss.channel[0].image.url;
             closeDrawer();
         });
     }
@@ -64,12 +64,14 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
     	angular.forEach($scope.feeds, function(feed) {
     	    Feed.parseFeed(feed.url).then(function(res){
 		$scope.pageTitle = "All"
-		console.log(res.data);
-    		var articles = $scope.setAuthor(res.data.rss.channel.item, feed.name);
-    		angular.forEach(articles, function(article) {
-    		    $scope.articles.push(article);
-    		});
-		$scope.parseDates();
+		console.log(res.data.rss.channel[0].item);
+		if (res.data.rss != undefined){
+    		    var articles = $scope.setAuthor(res.data.rss.channel[0].item, feed.name);
+    		    angular.forEach(articles, function(article) {
+    			$scope.articles.push(article);
+    		    });
+		    $scope.parseDates();
+		}
     	    });
     	});
     }
@@ -79,7 +81,7 @@ app.controller("feedsController", ['$scope','FeedService','$http', function ($sc
 app.factory('FeedService',['$http',function($http){
     return {
         parseFeed : function(url){
-            return $http.get('http://lp1.eu:8001/?feed='+url);
+            return $http.get('http://lp1.eu:8002/rss2json?feed='+url);
         }
     }
 }]);

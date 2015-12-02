@@ -45,7 +45,7 @@
    <!--Main Container-->
    <div ng-hide="displayMode" class="mainContainer" id="mainContainer">
      <div ng-repeat="article in articles | orderBy: '-date'" class="card" ng-click="displayArticle($event, article)">
-	 <h4> {{article.author}} - {{article.title}}</h4>
+	 <h4> {{article.author}} - {{article.title[0]}}</h4>
          <p>
 	   <span ng-bind-html="article.description"></span>
 	 </p>
@@ -56,8 +56,8 @@
    <div class="mainContainer" id="contentDisplay" ng-show="displayMode">
      <div class="card">
         <p>{{selectedArticle.dateString}}</p>
-	<p ng-bind-html="selectedArticle.html_content"></p>
-        <a href="{{selectedArticle.link}}">OPEN</a>
+	<p ng-bind-html="selectedArticle['content:encoded'][0]"></p>
+        <a href="{{selectedArticle.link[0]}}">LINK</a>
      </div>
    </div>
   </div>
