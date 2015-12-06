@@ -49,7 +49,7 @@
          <p>
 	   <span ng-bind-html="article.description"></span>
 	 </p>
-         {{article.dateString}} - <a href="{{selectedArticle.link[0]}}">LINK</a>
+         {{article.dateString}} - <a href="{{selectedArticle.link[0]}}" target="_blank">LINK</a>
      </div>
    </div>
    <!--Main Container End-->
@@ -57,7 +57,7 @@
      <div class="card">
         <p>{{selectedArticle.dateString}}</p>
 	<p ng-bind-html="selectedArticle['content:encoded'][0]"></p>
-        <a href="{{selectedArticle.link[0]}}">LINK</a>
+        <a href="{{selectedArticle.link[0]}}" target="_blank">LINK</a>
      </div>
    </div>
   </div>
