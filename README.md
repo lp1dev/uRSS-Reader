@@ -4,7 +4,7 @@ uRSS Is a super slim and fast RSS Feeds Reader written in AngularJS and JavaScri
 
 # How to use it ?
 
-To deploy uRSS-Reader you need to have a web server and make the files available from the device you want to access your feeds.
+To deploy uRSS-Reader you need to have a web server and make the html and JS files available on the devices you want to access your feeds from.
 
 ##First edit the config.json file
 
